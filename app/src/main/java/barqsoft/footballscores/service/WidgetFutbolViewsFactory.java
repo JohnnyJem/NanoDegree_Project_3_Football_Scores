@@ -47,13 +47,13 @@ public class WidgetFutbolViewsFactory implements RemoteViewsService.RemoteViewsF
 
   @Override
   public void onCreate() {
-    // no-op
+    //starting the dataBase
     db = new ScoresDBHelper(ctxt);
   }
 
   @Override
   public void onDestroy() {
-    // no-op
+    // closing the datbase
     if (db!=null){
       db.close();
     }
@@ -66,9 +66,10 @@ public class WidgetFutbolViewsFactory implements RemoteViewsService.RemoteViewsF
 
   @Override //returns the row or cell View for a given position in your data set
   public RemoteViews getViewAt(int position) {
-    RemoteViews row= new RemoteViews(ctxt.getPackageName(), R.layout.row);
 
+    RemoteViews row= new RemoteViews(ctxt.getPackageName(), R.layout.row);
     row.setImageViewResource(R.id.home_image_crest, R.drawable.ic_launcher);
+      //Todo: Finish dataBase retreival
     //rawQuery("Column Index"
     //db.getReadableDatabase().query()
     //row.setTextViewText(R.id.home_text_name, db.getReadableDatabase().query(DatabaseContract.SCORES_TABLE, projection,SCORES_BY_DATE,selectionArgs,null,null,sortOrder);
